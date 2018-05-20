@@ -262,6 +262,7 @@ public class OuterDemoFinal {
 
 Java8之前不加会报错：
 Cannot refer to the non-final local variable name defined in an enclosing scope
+
 Java8后，已经不需要加final了：如果局部变量被匿名内部类访问，那么该局部变量相当于自动使用了final修饰
 
 
