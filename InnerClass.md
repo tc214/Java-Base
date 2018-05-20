@@ -1,5 +1,5 @@
 
-#### 成员内部类
+### 内部类
 
 ##### /*要求：使用已知的变量代替“？”，在控制台输出10，20，30。*/
 
@@ -66,7 +66,7 @@ class OutClass$InnerClass {
 在这个不完整的反编译字节码中，我们可以看到，编译器会为内部类创建一个叫做 this$0 的对象，它是外部类的引用。
 
 
-#####第二题：补齐代码 ，要求在控制台输出”HelloWorld“
+##### 第二题：补齐代码 ，要求在控制台输出”HelloWorld“
 ```java
         interface Inter { 
             void show(); 
@@ -81,8 +81,7 @@ class OutClass$InnerClass {
         }
 ```
 
-######
-解析：
+###### 解析：
 很明显，method是一个静态方法，并且不需要返回一个可以调用show方法对象的引用，
 show方法在接口Inter中定义，所以，Outer需要实现接口Inter才能调用show方法，然而，不能改变Outer的接口关系，
 只能通过内部类来实现，让内部类实现接口Inter，然后创建内部类对象调用show方法，需要打印“HelloWorld"，则需要在内部类
@@ -130,7 +129,6 @@ public class BwfOuterClass {
       }
 
       public static void main(String[] args) {
-
            new BwfOuterClass().new BwfInnerClass().print();
       }
 
@@ -206,7 +204,9 @@ public class AnonymousClass {
 ```
 
 运行结果：hello
+
 可以看到，我们直接将抽象类Parent中的方法在大括号中实现了，这样便可以省略一个类的书写。
+
 注意：抽象类是不能实例化的，不要以为new Parent()是创建Parent的实例，其实new的是Parent的实现类，这个实现类是个匿名内部类。
 
 匿名内部类还能用于接口上：
