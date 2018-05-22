@@ -45,7 +45,7 @@ public class SingleTon {
     public static SingleTon getInstance() {  
         return sInstance;
     }  
-    ...  
+    .... 
 }
 ```  
 静态代码块实现：  （可用，不推荐）
@@ -84,7 +84,7 @@ private static SingleTon sInstance;
        }
        return sInstance; 
    }  
-   ...  
+   ....  
 }
 ```   
 ######  懒汉二（可用，不推荐）
@@ -108,6 +108,7 @@ private static SingleTon sInstance;
 
 #####   Double check Lock - 双检锁  （推荐用）  
 ```java  
+
 public class SingleTon {  
     private volatile static SingleTon sInstance;  
       
@@ -122,15 +123,14 @@ public class SingleTon {
        }  
         
     }  
-    ...  
+    ....  
     }
-  ```  
-  
+```  
   优点：线程安全；资源利用率高；第一次执行时才实例化，效率高；第一次实例化后，可以避免不必要的同步。  
   缺点：第一次加载反应稍慢，高并发场景下有一定的缺陷；反序列化问题。    
-       
   
   
+
 #####  解决反序列化问题  
 
 在类里加入如下方法：  
