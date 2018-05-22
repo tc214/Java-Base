@@ -130,7 +130,15 @@ public class SingleTon {
   缺点：第一次加载反应稍慢，高并发场景下有一定的缺陷；反序列化问题。    
     
     
-  
+#####  解决反序列化问题   
+在类里加入如下方法：  
+```java 
+private Object readResolve() {
+       return sInstance;
+    }    
+```  
+
+     
 #####  静态内部类 单例模式-Initialization on Demand Holder  （推荐用）
 ```java  
 public class SingleTon {  
