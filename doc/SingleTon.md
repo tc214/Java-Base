@@ -26,7 +26,7 @@ public class SingleTon {
     }  
     ...  
 }
-```      
+```  
 
 优点：线程安全；  
 缺点：声明时就初始化，消耗性能；反序列化可能会重新构造对象。  
@@ -75,7 +75,7 @@ public class SingleTon {
   优点：线程安全；资源利用率高；第一次执行时才实例化，效率高；第一次实例化后，可以避免不必要的同步。  
   缺点：第一次加载反应稍慢，高并发场景下有一定的缺陷；反序列化问题。  
   
-#####  静态内部类 单例模式  
+#####  静态内部类 单例模式-Initialization on Demand Holder  
 ```java  
 public class SingleTon {  
     private SingleTon() {}    
