@@ -29,8 +29,9 @@ public class SingleTon {
 ```  
 优点：线程安全；  
 缺点：声明时就初始化，消耗性能；反序列化可能会重新构造对象。  
-
-#####  懒汉模式  
+         
+         
+#####    懒汉模式  
 声明一个静态对象，并在用户第一次调用getInstance时进行初始化：  
 ```java  
 public class SingleTon {  
@@ -46,11 +47,13 @@ private static SingleTon sInstance;
    ...  
 }
 ```    
-优点：
-#####  Double check Lock  双重判空  
+优点：线程安全；在使用时才被初始化，节约资源；  
+缺点：每次使用都需要同步，会消耗不必要的性能；反序列化问题。  
+
+#####   Double check Lock  双重判空  
 ```java  
 public class SingleTon {  
-    private static SingleTon sInstance;  
+    private volatile static SingleTon sInstance;  
       
     private SingleTon() {}  
     public static SingleTon getInstance() {  
@@ -66,6 +69,26 @@ public class SingleTon {
     ...  
     }
   ```  
-  
+  优点：线程安全；资源利用率高；第一次执行时才实例化，效率高；第一次实例化后，可以避免不必要的同步。  
+  缺点：第一次加载反应稍慢，高并发场景下有一定的缺陷；反序列化问题。  
+  
+#####  静态内部类 单例模式  
+```java  
+public class SingleTon {  
+    private SingleTon() {}    
+    
+    public static SingleTon getInstance() {  
+       return SingletoHolder.sInstance;
+       }  
+       
+    private static class SingletoHolder() {  
+       private static final SingleTon sInstance = new SingleTon();  
+      }
 
+...  
+}  
+```  
+优点：线程安全；延迟了单例初始化，节约资源；避免同步开销；  
+缺点：反序列化问题。  
 
+#####   枚举单例  
