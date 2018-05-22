@@ -53,7 +53,7 @@ private static SingleTon sInstance;
 优点：线程安全；在使用时才被初始化，节约资源；  
 缺点：每次使用都需要同步，会消耗不必要的性能；反序列化问题。  
 
-#####   Double check Lock  双重判空  
+#####   Double check Lock - 双检锁    
 ```java  
 public class SingleTon {  
     private volatile static SingleTon sInstance;  
@@ -72,6 +72,7 @@ public class SingleTon {
     ...  
     }
   ```  
+  
   优点：线程安全；资源利用率高；第一次执行时才实例化，效率高；第一次实例化后，可以避免不必要的同步。  
   缺点：第一次加载反应稍慢，高并发场景下有一定的缺陷；反序列化问题。  
   
