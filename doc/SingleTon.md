@@ -137,8 +137,8 @@ public class SingleTon {
 
 ```java   
 private Object readResolve() {
-       return sInstance;
-    }    
+    return sInstance;
+}    
 ```  
 
      
@@ -149,11 +149,11 @@ public class SingleTon {
     
     public static SingleTon getInstance() {  
        return SingletoHolder.sInstance;
-       }  
+    }  
        
     private static class SingletoHolder() {  
        private static final SingleTon sInstance = new SingleTon();  
-      }
+    }
 
 ...  
 }  
@@ -165,7 +165,10 @@ public class SingleTon {
 #####   枚举单例    （推荐用）
  ``` java  
  public enum SingletonEnum {  
-    INSTANCE;  
+    INSTANCE;    
+    public void doSomething() {  
+      ....  
+    }
  }  
  ```   
 优点：写法简单；线程安全；在任何情况下都只有一个实例。  
