@@ -1,6 +1,6 @@
 ### java线程:wait(),notify(),notifyAll()  
-&ensp;ensp;这三个方法用于协调多个线程对共享数据的存取，wait和notify方法是Java同步机制中重要的组成部分，  
-这些方法**只有在Synchronized方法或Synchronized代码块中才能使用**，
+&ensp;&ensp;这三个方法都是java.lang.Object的方法，用于协调多个线程对共享数据的存取，wait和notify方法是Java同步机制  
+中重要的组成部分，这些方法**只有在Synchronized方法或Synchronized代码块中才能使用**，
 否者就会报java.lang.IllegalMonitorStateExceprion异常;  
 当Synchronized方法或者Synchronized代码块中的wait()方法被调用时，当前线程将被中断运行，并且放弃该对象锁,当例外  
 的线程执行了某个对象notify()方法后,会唤醒在此对象等待池中的某个线程，使之成为可运行的(就绪状态)线程。notifyAll()  
