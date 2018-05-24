@@ -111,7 +111,8 @@ public class ProductTest {
          }
 }
 
-```    
+```  
+
 运行结果：  
 ```java  
 生产者:添加了第1个产品
@@ -151,11 +152,12 @@ public class ProductTest {
 生产者:添加了第5个产品
 
  
-...
-...
-...
+....
+....
+....
 
-```    
+```  
+
 只要不主动停止，程序会一直正常运行下去。  
 上述代码中，notifyAll()可以全部改为notify()，两者作用是一样的。
   
@@ -164,9 +166,8 @@ public class ProductTest {
 ###   建议       
 优先使用notifyAll()。  
 始终应该使用wait循环模式来调用wait()。  
-没有理由在新代码中使用wait和
-
-###               
+没有理由在新代码中使用wait和notify。
+               
    
 
  
