@@ -31,7 +31,7 @@ public class ProductTest {
 	}
 	
 	public static class Clerk {
-		int productNums = 0; 
+		private volatile int productNums = 0; 
 		
 		public synchronized void addProduct() {
 			if (productNums >= 20) {
