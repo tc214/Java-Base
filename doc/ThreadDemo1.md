@@ -158,8 +158,15 @@ public class ProductTest {
 ```    
 只要不主动停止，程序会一直正常运行下去。  
 上述代码中，notifyAll()可以全部改为notify()，两者作用是一样的。
+  
+    
+    
+###   建议       
+优先使用notifyAll()。  
+始终应该使用wait循环模式来调用wait()。  
+没有理由在新代码中使用wait和
 
-   
+###               
    
 
  
