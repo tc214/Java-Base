@@ -36,19 +36,16 @@ public class ProductTest {
 		public synchronized void addProduct() {
 			if (productNums >= 20) {
 				try {  
-				   wait(); // 当生产者生产的产品超过20个后，不再生产，等待消费者来买走产品   
+				    wait(); // 当生产者生产的产品超过20个后，不再生产，等待消费者来买走产品   
 				   
 				} catch (InterruptedException e) {  
-				
-					e.printStackTrace();  
-					
+				    e.printStackTrace();  
 				}  
 				
 			} else {
 				productNums = productNums + 1;  
-				
-				System.out.println(Thread.currentThread().getName() + ":" + "添加了第" + productNums + "个产品");  
-				
+				System.out.println(Thread.currentThread().getName() + ":" + "添加了第"
+				    + productNums + "个产品");  
 				notifyAll();
 			}
 		}
@@ -93,24 +90,24 @@ public class ProductTest {
 		
 		private Clerk clerk;
 
-        public Consumer(Clerk clerk) {
-            this.clerk = clerk;
-        }
+        	public Consumer(Clerk clerk) {
+           	 this.clerk = clerk;
+        	}
 
-        @Override
-        public void run() {
+		@Override
+		public void run() {
 
-            while (true) {
-                try {
-                    // 不知道什么时候消费者回来添加产品，所以用一个随机时间来让线程休眠，模拟消费者来访的不定时
-                    Thread.sleep((int) (Math.random() * 10) * 100);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-                clerk.getProduct();
-            }
-        }
-    }
+		    while (true) {
+			try {
+			    // 不知道什么时候消费者回来添加产品，所以用一个随机时间来让线程休眠，模拟消费者来访的不定时
+			    Thread.sleep((int) (Math.random() * 10) * 100);
+			} catch (InterruptedException e) {
+			    e.printStackTrace();
+			}
+			clerk.getProduct();
+		    }
+		}
+         }
 }
 
 ```    
@@ -158,7 +155,8 @@ public class ProductTest {
 ...
 
 ```    
-只要不主动停止，程序会一直正常运行下去。
+只要不主动停止，程序会一直正常运行下去。  
+上述代码中，notifyAll()可以全部改为notify()，两者作用是一样的。
 
    
    
