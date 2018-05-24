@@ -1,6 +1,6 @@
 ### java 线程 wait和notify方法  
-wait和notify方法是Java同步机制中重要的组成部分，这些方法只有在Synchronized方法或Synchronized代码块中才能使用,  
-否者就会报java.lang.IllegalMonitorStateExceprion异常;
+wait和notify方法是Java同步机制中重要的组成部分，这些方法**只有在Synchronized方法或Synchronized代码块中才能使用**，
+否者就会报java.lang.IllegalMonitorStateExceprion异常;  
 当Synchronized方法或者Synchronized代码块中的wait()方法被调用时，当前线程将被中断运行，并且放弃该对象锁,当例外  
 的线程执行了某个对象notify()方法后,会唤醒在此对象等待池中的某个线程，使之成为可运行的(就绪状态)线程。notifyAll()  
 方法会唤醒所有等待这个对象的线程成为可运行的线程。  
@@ -13,9 +13,9 @@ wait和notify方法是Java同步机制中重要的组成部分，这些方法只
  生产者比消费者快时，消费者会漏掉一些数据没有取到
  消费者比生产者快时，消费者会取相同的数据  
   
-  代码：  
-  ```java  
+ 代码：   
   
+```java      
 public class ProductTest {
 
 	public static void main(String[] args) {
@@ -35,16 +35,20 @@ public class ProductTest {
 		
 		public synchronized void addProduct() {
 			if (productNums >= 20) {
-				try {
-          // 当生产者生产的产品超过20个后，不再生产，等待消费者来买走产品
-					wait();
-				} catch (InterruptedException e) {
-					e.printStackTrace();
-				}
+				try {  
+				   wait(); // 当生产者生产的产品超过20个后，不再生产，等待消费者来买走产品   
+				   
+				} catch (InterruptedException e) {  
+				
+					e.printStackTrace();  
+					
+				}  
+				
 			} else {
-				productNums = productNums + 1;
-				System.out.println(Thread.currentThread().getName() + ":"
-						+ "添加了第" + productNums + "个产品");
+				productNums = productNums + 1;  
+				
+				System.out.println(Thread.currentThread().getName() + ":" + "添加了第" + productNums + "个产品");  
+				
 				notifyAll();
 			}
 		}
