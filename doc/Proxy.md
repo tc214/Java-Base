@@ -60,10 +60,14 @@ public class TestProxy {
 ```  
 
 运行结果：  
----Saved data---
-Start transaction...
----Saved data---
-Commit transaction...
+---Saved data---  
+
+Start transaction...  
+
+---Saved data---  
+
+Commit transaction...  
+
 
 
 #####   静态代理总结   
@@ -153,11 +157,16 @@ public class TestDProxy {
 }  
 ```  
 运行结果：  
-class org.tc.proxy.dynamic.UserDao
-class com.sun.proxy.$Proxy0
-开始事务
----Saved data---
-提交事务
+class org.tc.proxy.dynamic.UserDao  
+
+class com.sun.proxy.$Proxy0  
+
+开始事务  
+
+---Saved data---  
+
+提交事务  
+
   
 ** 增加一个方法：  
 ```java  
@@ -242,13 +251,20 @@ public class TestDProxy {
 }  
 ```  
 运行结果：  
-class org.tc.proxy.dynamic.UserDao
-class com.sun.proxy.$Proxy0
-开始事务1
----Saved data---
-提交事务1
-开始事务2
----del data---
+class org.tc.proxy.dynamic.UserDao  
+
+class com.sun.proxy.$Proxy0  
+
+开始事务1  
+
+---Saved data---  
+
+提交事务1  
+
+开始事务2  
+
+---del data---  
+
 提交事务2
 
 
