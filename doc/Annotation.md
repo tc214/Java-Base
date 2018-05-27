@@ -43,20 +43,19 @@ public @interface ContentView {
 使用时直接传参数，不必指明属性名：  
 
 @Author(name = "Libai", date = "2018.5.20")  
-
 @ContentView(R.layout.activity_annotation)  
-
 public class AnnotationTestActivity extends BaseActivity {...}    
 
 
 ###  注解的作用
 &ensp; &ensp; 1、生成文档。这是最常见的，也是java 最早提供的注解。常用的有@param @return 等;  
 &ensp; &ensp; 2、跟踪代码依赖性，实现替代配置文件功能。比如Dagger 2依赖注入，未来java开发，将大量注解配置，具有很大用处;  
-&ensp; &ensp; 3、在编译时进行格式检查，提示信息。如@override 放在方法前，如果你这个方法并不是覆盖了超类方法，则编译时就能检查出。  
+&ensp; &ensp; 3、在编译时进行格式检查，提示信息。如@override 放在方法前，如果你这个方法并不是覆盖了超类方法，则编译时就能检查出。  
+
 &ensp; &ensp; 4、编译时生成代码：一些处理器可以在编译时根据注解信息生成代码，比如 Java 代码，xml 代码等；
 
 
-####  准备
+####  
 
 ###  注解的原理
 &ensp; &ensp;注解本质是一个继承了Annotation的特殊接口，其具体实现类是Java运行时生成的动态代理类。而我们通过反射获取注解时，返回的是Java运行  
