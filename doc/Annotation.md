@@ -41,9 +41,13 @@ public @interface ContentView {
 }  
 ```
 使用时直接传参数，不必指明属性名：  
-@Author(name = "Libai", date = "2018.5.20")
-@ContentView(R.layout.activity_annotation)
-public class AnnotationTestActivity extends BaseActivity {...}  
+
+@Author(name = "Libai", date = "2018.5.20")  
+
+@ContentView(R.layout.activity_annotation)  
+
+public class AnnotationTestActivity extends BaseActivity {...}    
+
 
 ###  注解的作用
 &ensp; &ensp; 1、生成文档。这是最常见的，也是java 最早提供的注解。常用的有@param @return 等;  
