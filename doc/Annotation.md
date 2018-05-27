@@ -116,13 +116,21 @@ ElementType.PACKAGE : 作用于包
 ###  自定义一个注解  
 ####  自定义注解类编写的一些规则:  
 #####
-  1. Annotation型定义为@interface, 所有的Annotation会自动继承java.lang.Annotation这一接口,并且不能再去继承别的类或是接口.
-  2. 参数成员只能用public或默认(default)这两个访问权修饰
-  3. 参数成员只能用基本类型byte,short,char,int,long,float,double,boolean八种基本数据类型和String、Enum、Class、annotations等数据类型,以及这一些类型的数组.
-  4. 要获取类方法和字段的注解信息，必须通过Java的反射技术来获取 Annotation对象,因为你除此之外没有别的获取注解对象的方法
-  5. 注解也可以不定义成员, 不过这样注解就没啥用了
-PS:自定义注解需要使用到元注解
-我们可以使用 default … 为注解的某个属性指定默认值，这样即使不指定某个属性，编译器也不会报错。这通常可以节约很多时间，比如这样：  
+  1. Annotation型定义为@interface, 所有的Annotation会自动继承java.lang.Annotation这一接口,并且不能再去继承别的类或是接口.  
+  
+  2. 参数成员只能用public或默认(default)这两个访问权修饰.  
+  
+  3. 参数成员只能用基本类型byte,short,char,int,long,float,double,boolean八种基本数据类型和String、Enum、Class、annotations等数据类型,以及这一些类型的数组.  
+  
+  4. 要获取类方法和字段的注解信息，必须通过Java的反射技术来获取 Annotation对象,因为你除此之外没有别的获取注解对象的方法  
+  
+  5. 注解也可以不定义成员, 不过这样注解就没啥用了  
+  
+  PS:自定义注解需要使用到元注解  
+
+我们可以使用 default … 为注解的某个属性指定默认值，这样即使不指定某个属性，编译器也不会报错。这通常可以节约很多时间，  
+比如这样：  
+
 ```java  
 @Retention(RetentionPolicy.SOURCE)
 @Target(ElementType.TYPE)
@@ -131,6 +139,7 @@ public @interface Author {
     String date();
 }  
 ```  
+
 当我们使用 @Author 时没有指定 name = XXX，则会默认为 “Moren”。  
   
 ###  注解处理器
