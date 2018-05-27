@@ -67,32 +67,52 @@ public class AnnotationTestActivity extends BaseActivity {...}
 Java 内置的注解主要有 9 个，分为位于 java.lang or java.lang.annotation 包下。
 
 #####  5个用于通知编译器信息的注解：
-@Override ：空注解，用于标记那些覆盖父类方法的方法，如果父类没有这个方法，或者复写的方法访问权限比父类的权限小，编译器就会报错；
-@Deprecated : 空注解，用于标记那些不应该被使用的代码，如果使用了过时的代码，编译器会发出警告；
-@SafeVarargs : 空注解，（varargs 可变参数）用于标记构造函数或者方法，通知编译器，这里的可变参数相关的操作保证安全；
-@FunctionInterface : Java SE 8 出现的，用于通知编译器，这个类型是 function 接口
+@Override ：空注解，用于标记那些覆盖父类方法的方法，如果父类没有这个方法，或者复写的方法访问权限比父类的权限小，编译器就会报错；  
+
+@Deprecated : 空注解，用于标记那些不应该被使用的代码，如果使用了过时的代码，编译器会发出警告；  
+
+@SafeVarargs : 空注解，（varargs 可变参数）用于标记构造函数或者方法，通知编译器，这里的可变参数相关的操作保证安全；  
+
+@FunctionInterface : Java SE 8 出现的，用于通知编译器，这个类型是 function 接口;  
+
 @SuppressWarning：抑制错误，可以用于标记整个类、某个方法、某个属性或者某个参数，用于告诉编译器这个代码是安全的，不必警告， 
-强烈建议最小范围使用这个注解，一旦你在一个比较大的范围抑制错误，可能会把真正的问题掩盖了。  
+强烈建议最小范围使用这个注解，一旦你在一个比较大的范围抑制错误，可能会把真正的问题掩盖了。  
+
 
 #####  4 个用于修饰注解的注解-元注解： 
 修饰其他注解的注解称为“元注解”。
 
-@Documented：让注解信息出现在 document 中
-@Retention ： 指出注解如何存储，支持以下三种参数 
-RetentionPolicy.SOURCE : 注解只保留在源码中，编译时会忽略
-RetentionPolicy.CLASS : 更高一级，编译时被编译器保留，但是运行时会被 JVM 忽略
-RetentionPolicy.RUNTIME : 最高级，运行时会被保留，可以被运行时访问
-@Target ：指出注解作用于（修饰）什么对象，支持以下几种参数 
-ElementType.TYPE : 作用于任何类、接口、枚举
-ElementType.FIELD : 作用于一个域或者属性
-ElementType.METHOD : 作用于一个方法
-ElementType.PARAMTER : 作用于参数
-ElementType.CONSTRUCTOR : 作用于构造函数
-ElementType.LOCAL_VARIABLE : 作用于本地变量
-ElementType. ANNOTATION_TYPE : 作用于注解
-ElementType.PACKAGE : 作用于包
+@Documented：让注解信息出现在 document 中  
+
+@Retention ： 指出注解如何存储，支持以下三种参数   
+
+RetentionPolicy.SOURCE : 注解只保留在源码中，编译时会忽略  
+
+RetentionPolicy.CLASS : 更高一级，编译时被编译器保留，但是运行时会被 JVM 忽略  
+
+RetentionPolicy.RUNTIME : 最高级，运行时会被保留，可以被运行时访问  
+
+@Target ：指出注解作用于（修饰）什么对象，支持以下几种参数  
+
+ElementType.TYPE : 作用于任何类、接口、枚举  
+
+ElementType.FIELD : 作用于一个域或者属性  
+
+ElementType.METHOD : 作用于一个方法  
+
+ElementType.PARAMTER : 作用于参数  
+
+ElementType.CONSTRUCTOR : 作用于构造函数  
+
+ElementType.LOCAL_VARIABLE : 作用于本地变量  
+
+ElementType. ANNOTATION_TYPE : 作用于注解  
+
+ElementType.PACKAGE : 作用于包  
+
 @Inherited ：当前注解是否可以继承
-  
+  
+  
 ###  自定义一个注解  
 ####  自定义注解类编写的一些规则:  
 #####
@@ -114,12 +134,16 @@ public @interface Author {
 当我们使用 @Author 时没有指定 name = XXX，则会默认为 “Moren”。  
   
 ###  注解处理器
-####  注解处理器是（Annotation Processor）是javac的一个工具，用来在编译时扫描和编译和处理注解（Annotation）。你可以自己定义注解和注解处理器去搞一些事情。一个注解处理器它以Java代码或者（编译过的字节码）作为输入，生成文件（通常是java文件）。这些生成的java文件不能修改，并且会同其手动编写的java代码一样会被javac编译。看到这里加上之前理解，应该明白大概的过程了，就是把标记了注解的类，变量等作为输入内容，经过注解处理器处理，生成想要生成的java代码。
- #### 对于注解，如果没有注解处理器，其作用和注释没有多大区别。
- #### 运行时处理器和编译时处理器
+####  注解处理器是（Annotation Processor）是javac的一个工具，用来在编译时扫描和编译和处理注解（Annotation）。你可以自己定义注解和注解处理器去搞一些事情。一个注解处理器它以Java代码或者（编译过的字节码）作为输入，生成文件（通常是java文件）。这些生成的java文件不能修改，并且会同其手动编写的java代码一样会被javac编译。看到这里加上之前理解，应该明白大概的过程了，就是把标记了注解的类，变量等作为输入内容，经过注解处理器处理，生成想要生成的java代码。  
+
+ #### 对于注解，如果没有注解处理器，其作用和注释没有多大区别。  
+ 
+ #### 运行时处理器和编译时处理器  
+ 
  先介绍简单的一种：运行时注解处理器。
 运行时注解需要使用 注解 + 反射 ，非常简单。
-我们先自定义一个 ContentView 注解，表示当前布局对应的 layout 文件：
+我们先自定义一个 ContentView 注解，表示当前布局对应的 layout 文件：  
+
 ```java  
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.TYPE)
@@ -138,8 +162,10 @@ public class AnnotationTestActivity extends BaseActivity {
         setContentView(R.layout.activity_annotation);
     }
 }  
-```  
-在 BaseActivity 中反射获取当前类使用的注解，拿到注解的值，就可以直接设置布局了：  
+```    
+
+在 BaseActivity 中反射获取当前类使用的注解，拿到注解的值，就可以直接设置布局了：    
+
 ```java  
 @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -166,8 +192,9 @@ public class AnnotationTestActivity extends BaseActivity {
 
         }
     }  
-  ```  
-  这样就简单实现了运行时根据注解动态设置布局的功能。
+  ```    
+  
+ 这样就简单实现了运行时根据注解动态设置布局的功能。
 
 ### 总结
 使用注解往往可以实现用非常少的代码作出匪夷所思的事情，比如 ButterKnife。
